@@ -14,6 +14,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import api from '../../services/api';
 
 interface ForgotPasswordFormData {
   email: string;
@@ -37,6 +38,17 @@ const ForgotPassword: React.FC = () => {
 
         await schema.validate(data, {
           abortEarly: false,
+        });
+
+        api.post('/password/forgot', {
+          email: data.email,
+        });
+
+        addToast({
+          type: 'success',
+          title: 'E-mail de recuperação enviado',
+          description:
+            'Enviamos um e-mail para confirmar a recuperação de senha, cheque sua caixa de entrada',
         });
 
         // history.push('/dashboard');
