@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FiPower, FiClock } from 'react-icons/fi';
 import {
@@ -10,12 +10,16 @@ import {
   Schedule,
   Calendar,
   NextAppointment,
+  Section,
+  Appointment,
 } from './styles';
 
 import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/auth';
 
 const Dashboard: React.FC = () => {
+  const { selectedDate, setSelectedDate } = useState(new Date());
+
   const { signOut, user } = useAuth();
 
   console.log(user);
@@ -64,6 +68,61 @@ const Dashboard: React.FC = () => {
               </span>
             </div>
           </NextAppointment>
+          <Section>
+            <strong>Manha</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/43911808?s=400&u=edbaebcd9105cd3e0f6fc9db480d474c966b80c6&v=4"
+                  alt="Ariel Vaz"
+                />
+
+                <strong>Ariel Vaz</strong>
+              </div>
+            </Appointment>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/43911808?s=400&u=edbaebcd9105cd3e0f6fc9db480d474c966b80c6&v=4"
+                  alt="Ariel Vaz"
+                />
+
+                <strong>Ariel Vaz</strong>
+              </div>
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/43911808?s=400&u=edbaebcd9105cd3e0f6fc9db480d474c966b80c6&v=4"
+                  alt="Ariel Vaz"
+                />
+
+                <strong>Ariel Vaz</strong>
+              </div>
+            </Appointment>
+          </Section>
         </Schedule>
         <Calendar />
       </Content>
